@@ -1,6 +1,6 @@
 package application;
 
-import java.io.IOException;
+//import java.io.IOException;
 
 import display.ApplicationService;
 
@@ -9,9 +9,10 @@ public class Main {
 		
 		ApplicationService as = new ApplicationService();
 		while(as.escape) {
-			for (int row = 0; row < 40; row++) System.out.println(" ");
+			for (int row = 0; row < 40; row++) System.out.println(" ");	// clear console window.
 			as.MainDisplay();
-			/*
+			
+			/* When using windows cmd.
 			try {
 				Runtime.getRuntime().exec("cls");
 			} catch (IOException e) {

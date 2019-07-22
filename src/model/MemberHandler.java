@@ -11,6 +11,10 @@ public class MemberHandler {
 		this.NumOfMember = 0;
 	}
 	
+	public int getNumOfMember() {
+		return this.NumOfMember;
+	}
+	
 	public void PrintMemberList() {
 		int Index = 1;
 		if (this.NumOfMember > 0) {
@@ -36,7 +40,7 @@ public class MemberHandler {
 	// TempMember is data to be modified.
 	public boolean ModifyMember(int TargetIndex, Member TempMember) {
 		if (TargetIndex > 0 && TargetIndex <= this.NumOfMember) {
-			Member TargetMember = MemberList.get(TargetIndex);
+			Member TargetMember = MemberList.get(TargetIndex - 1);	// Have to -1, because ArrayList's entry index is 0.
 			TargetMember.initMember(TargetMember.getOriginNo(), TempMember.getName(), TempMember.getAge(), TempMember.getPhone(), TempMember.getAddress());
 			return true;
 		}
@@ -47,7 +51,7 @@ public class MemberHandler {
 	// TargetIndex is 1 ~ this.NumOfMember.
 	public boolean DeleteMember(int TargetIndex) {
 		if (TargetIndex > 0 && TargetIndex <= this.NumOfMember) {
-			MemberList.remove(TargetIndex);
+			MemberList.remove(TargetIndex - 1);	// Have to -1, because ArrayList's entry index is 0.
 			this.NumOfMember--;
 			return true;
 		}
@@ -55,8 +59,7 @@ public class MemberHandler {
 	}
 	
 	public void ALLDeleteMember() {
-		for (Member CurrentMember : MemberList) {
-			MemberList.remove(CurrentMember);
-		}
+		for (int i = 0; i < MemberList.size(); i++) MemberList.remove(i);
+		this.NumOfMember = 0;
 	}
 }
