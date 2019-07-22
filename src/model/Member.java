@@ -21,6 +21,12 @@ public class Member {
 	
 	
 	//////////////////////// Getter, Setter /////////
+	
+	// Origin_no;
+	public int getOriginNo() {
+		return this.origin_no;
+	}
+	
 	// Name
 	public String getName() {
 		return this.name;

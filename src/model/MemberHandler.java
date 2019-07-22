@@ -13,10 +13,12 @@ public class MemberHandler {
 	
 	public void PrintMemberList() {
 		int Index = 1;
-		for(Member CurrentMember : MemberList) {
-			System.out.print(">> No." + Index);
-			CurrentMember.PrintInfo();
-		}
+		if (this.NumOfMember > 0) {
+			for(Member CurrentMember : MemberList) {
+				System.out.print(">> No." + Index++);
+				CurrentMember.PrintInfo();
+			}
+		} else System.out.println(">> No data..");
 	}
 	
 	public boolean CreateMember(Member TempMember) {
@@ -35,10 +37,7 @@ public class MemberHandler {
 	public boolean ModifyMember(int TargetIndex, Member TempMember) {
 		if (TargetIndex > 0 && TargetIndex <= this.NumOfMember) {
 			Member TargetMember = MemberList.get(TargetIndex);
-			TargetMember.setName(TempMember.getName());
-			TargetMember.setAge(TempMember.getAge());
-			TargetMember.setPhone(TempMember.getPhone());
-			TargetMember.setAddress(TempMember.getAddress());
+			TargetMember.initMember(TargetMember.getOriginNo(), TempMember.getName(), TempMember.getAge(), TempMember.getPhone(), TempMember.getAddress());
 			return true;
 		}
 		
