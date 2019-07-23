@@ -10,7 +10,7 @@ public class MemberHandler {
 	private int NumOfMember;
 	
 	public MemberHandler() {
-		this.MemDAO = new MemberDAO("smparkworld.com", "61655", "parksapp", "park#godqhr1!");
+		this.MemDAO = new MemberDAO("", "", "", "");
 		this.MemberList = new ArrayList<Member>();
 		this.NumOfMember = this.MemDAO.LoadDatabase(this.MemberList);
 	}
