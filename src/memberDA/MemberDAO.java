@@ -39,6 +39,40 @@ public class MemberDAO {
 		}
 	}
 	
+	public void UpdateMember(int origin_no, String name, int age, String phone, String address) {
+		try {
+			Statement stmt = this.db.createStatement();
+			String query = "update membermanagement set name = '" + name + "', age = " + age  + ", phone = '" + phone + "', juso = '" + address + "' where no = " + origin_no;
+			stmt.executeUpdate(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void DeleteMember(int origin_no) {
+		try {
+			Statement stmt = this.db.createStatement();
+			String query = "delete from membermanagement where no = " + origin_no;
+			stmt.executeUpdate(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void DeleteMemberALL() {
+		try {
+			Statement stmt = this.db.createStatement();
+			String query = "delete from membermanagement";
+			stmt.executeUpdate(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	// Return value is the number of Member.
 	public int LoadDatabase(ArrayList<Member> MemberList) {
 		int ret = 0;

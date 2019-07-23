@@ -49,7 +49,7 @@ public class MemberHandler {
 		if (TargetIndex > 0 && TargetIndex <= this.NumOfMember) {
 			Member TargetMember = MemberList.get(TargetIndex - 1);	// Have to -1, because ArrayList's entry index is 0.
 			TargetMember.initMember(TargetMember.getOriginNo(), TempMember.getName(), TempMember.getAge(), TempMember.getPhone(), TempMember.getAddress());
-			
+			this.MemDAO.UpdateMember(TargetMember.getOriginNo(), TempMember.getName(), TempMember.getAge(), TempMember.getPhone(), TempMember.getAddress());
 			this.MemDAO.LoadDatabase(MemberList);
 			return true;
 		}
@@ -60,7 +60,8 @@ public class MemberHandler {
 	// TargetIndex is 1 ~ this.NumOfMember.
 	public boolean DeleteMember(int TargetIndex) {
 		if (TargetIndex > 0 && TargetIndex <= this.NumOfMember) {
-			MemberList.remove(TargetIndex - 1);	// Have to -1, because ArrayList's entry index is 0.
+			this.MemDAO.DeleteMember(this.MemberList.get(TargetIndex - 1).getOriginNo());	// Have to -1, because ArrayList's entry index is 0.
+			this.MemberList.remove(TargetIndex - 1);	// Have to -1, because ArrayList's entry index is 0.
 			this.NumOfMember = this.MemDAO.LoadDatabase(MemberList);
 			return true;
 		}
@@ -68,6 +69,7 @@ public class MemberHandler {
 	}
 	
 	public void ALLDeleteMember() {
+		this.MemDAO.DeleteMemberALL();
 		this.MemberList.clear();
 		this.NumOfMember = 0;
 	}
