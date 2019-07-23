@@ -9,7 +9,7 @@ public class Main {
 		
 		ApplicationService as = new ApplicationService();
 		while(as.escape) {
-			for (int row = 0; row < 40; row++) System.out.println(" ");	// clear console window.
+			for (int row = 0; row < 40; row++) System.out.println(" ");	// clear console view.
 			as.MainDisplay();
 			
 			/* When using windows cmd.

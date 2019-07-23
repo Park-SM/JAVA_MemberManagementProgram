@@ -38,7 +38,7 @@ public class ApplicationService {
 		System.out.print(">> command:: ");
 		String command = sc.nextLine();
 		
-		for (int row = 0; row < 40; row++) System.out.println(" ");	// clear console window.
+		for (int row = 0; row < 40; row++) System.out.println(" ");	// clear console view.
 		
 		if (command.equals("print")) this.PrintMenu();
 		else if (command.equals("add")) this.AddMenu();

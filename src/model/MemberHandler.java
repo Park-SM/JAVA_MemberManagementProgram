@@ -2,11 +2,15 @@ package model;
 
 import java.util.ArrayList;
 
+import memberDA.MemberDAO;
+
 public class MemberHandler {
+	MemberDAO MemDAO;
 	private ArrayList<Member> MemberList;
 	private int NumOfMember;
 	
 	public MemberHandler() {
+		this.MemDAO = new MemberDAO("smparkworld.com", "61655", "parksapp", "park#godqhr1!");
 		this.MemberList = new ArrayList<Member>();
 		this.NumOfMember = 0;
 	}
@@ -30,6 +34,7 @@ public class MemberHandler {
 			Member NewMember = new Member();
 			NewMember.initMember(0, TempMember.getName(), TempMember.getAge(), TempMember.getPhone(), TempMember.getAddress());
 			MemberList.add(NewMember);
+			this.MemDAO.InsertMember(TempMember.getName(), TempMember.getAge(), TempMember.getPhone(), TempMember.getAddress());
 			this.NumOfMember++;
 			return true;
 		}
