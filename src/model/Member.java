@@ -16,7 +16,7 @@ public class Member {
 	}
 
 	public void PrintInfo() {
-		System.out.println(" | Name: " + this.name + " | Age: " + this.age + " | Phone: " + this.phone + " | Address: " + this.address);
+		System.out.println(" Origin_no: " + this.origin_no + " | Name: " + this.name + " | Age: " + this.age + " | Phone: " + this.phone + " | Address: " + this.address);
 	}
 	
 	

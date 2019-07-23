@@ -1,9 +1,12 @@
 package memberDA;
 
+import model.Member;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class MemberDAO {
 	public Connection db;
@@ -34,6 +37,29 @@ public class MemberDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	// Return value is the number of Member.
+	public int LoadDatabase(ArrayList<Member> MemberList) {
+		int ret = 0;
+		try {
+			MemberList.clear();
+			Member NewMember = null;
+			
+			Statement stmt = this.db.createStatement();
+			String query = "select * from membermanagement order by no";
+			ResultSet result = stmt.executeQuery(query);
+			for (; result.next(); ret++) {
+				NewMember = new Member();
+				NewMember.initMember(result.getInt("no"), result.getString("name"), result.getInt("age"), result.getString("phone"), result.getString("juso"));
+				MemberList.add(NewMember);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return ret;
 	}
 	
 	@Override
